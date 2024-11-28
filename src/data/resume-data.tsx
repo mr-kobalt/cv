@@ -13,7 +13,7 @@ export const RESUME_DATA = {
     "Операционный директор, Руководитель проектов, Бизнес-аналитик",
   summary:
     "14 лет опыт работы в IT-интеграторах России.  Люблю IT во всех проявлениях. Склонен к системному подходу и анализу данных. Выбираю обучение через практику. Пропагандирую data-driven и вероятностный подходы в бизнесе (и жизни). Стремлюсь участвовать в сложных и полезных проектах.",
-  avatarUrl: "https://cdn4.cdn-telegram.org/file/llz5zRpGQXplhbCn9wVsFHQKHuxAToeMyHNA-MCMn8ggBCZzZTR3Cs-7BAew2mdMRSABubCMjWtTPLDlNGRz7qV6C3fIawNjgMR8O95ka0ZzIR07M4jQk4nBHhcweOkyZ3HsihhK-LQvVvdhplVVniexCfO4OoXLcT94T0oiIqbBrP_EvdKtl7L7NAgUsfd6FngdsklbLAf0dY3W3FFLA0Y6IrUm1wYQUE3-VLYVKWvb3za5XmGZvIpp5IAV5Bvncr3bYNl6yIYsk5bFDMpnJKyUt0E14vrM8HsSQALdL0ONIweoY4sP3V6BQPH1nCrgBOH06hV-JYxIJH5OAimrfQ.jpg",
+  avatarUrl: "./avatar.jpg",
   contact: {
     email: "v@kov.app",
     tel: "+79052722251",
