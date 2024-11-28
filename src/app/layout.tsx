@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
-import { Metrika } from "@/components/metrika";
+import { MetrikaScript } from "@/components/metrika";
 import { Inter } from "next/font/google";
 
 import "./globals.css";
@@ -23,6 +23,8 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const ymetrika = Number(process.env.YMETRIKA);
+
   return (
     <html lang="ru-RU" className={inter.className}>
       <body className="overflow-x-clip">
@@ -31,7 +33,7 @@ export default function RootLayout({
           {Number(process.env.YMETRIKA)}
         </div>
         <Printer/>
-        <Metrika id={Number(process.env.YMETRIKA)} />
+        <MetrikaScript id={ymetrika} />
       </body>
       <Analytics />
     </html>
