@@ -30,7 +30,6 @@ export default function RootLayout({
       <body className="overflow-x-clip">
         <div className="transform-none lg:scale-125 origin-top">
           {children}
-          {Number(process.env.YMETRIKA)}
         </div>
         <Printer/>
         <MetrikaScript id={ymetrika} />
