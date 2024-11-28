@@ -47,7 +47,7 @@ export default function Page() {
                     size="icon"
                     asChild
                   >
-                    <a href={`mailto:${RESUME_DATA.contact.email}`}>
+                    <a href={`mailto:${RESUME_DATA.contact.email}`} aria-label="Mail me">
                       <MailIcon className="size-4" />
                     </a>
                   </Button>
@@ -59,7 +59,7 @@ export default function Page() {
                     size="icon"
                     asChild
                   >
-                    <a href={`tel:${RESUME_DATA.contact.tel}`}>
+                    <a href={`tel:${RESUME_DATA.contact.tel}`} aria-label="Call me">
                       <PhoneIcon className="size-4" />
                     </a>
                   </Button>
