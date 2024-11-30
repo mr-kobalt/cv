@@ -12,6 +12,7 @@ import { ToolsCard } from "@/components/tools-card-popover";
 import { WorkCard } from "@/components/work-card";
 import { ProjectCard } from "@/components/project-card";
 import { Separator } from "@/components/ui/separator";
+import { ToggleTheme } from "@/components/theme-toggle";
 
 export const metadata: Metadata = {
   title: `${RESUME_DATA.name} | ${RESUME_DATA.about}`,
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <main className="container relative mx-auto scroll-my-12 overflow-auto px-4 pt-4 print:pt-0 md:pt-16">
-      <section className="mx-auto w-full max-w-2xl space-y-8 bg-white print:space-y-4">
+      <section className="mx-auto w-full max-w-2xl space-y-8 print:space-y-4">
         <div>
           <h1 className="text-2xl font-bold sm:hidden">{RESUME_DATA.name}</h1>
           <div className="flex items-center justify-between">
@@ -255,11 +256,11 @@ export default function Page() {
         orientation="horizontal"
         className="mt-5 mx-auto w-full max-w-2xl data-[orientation=horizontal]:h-px data-[orientation=vertical]:h-full data-[orientation=horizontal]:w-full data-[orientation=vertical]:w-px"
       />
-      <footer className="print:hidden">
-        <div className="group flex items-center justify-center gap-1 my-2 text-xs text-center font-mono text-muted-foreground hover:text-foreground">
+      <footer className="flex items-center justify-center print:hidden mx-auto w-full max-w-2xl">
+        <div className="group flex-1 flex items-center justify-start gap-1 my-2 text-xs text-center font-mono text-muted-foreground hover:text-foreground transition-all max-sm:text-[10px]">
           Based on
           <Button
-            className="px-0 text-xs text-muted-foreground group-hover:text-foreground focus-visible:ring-offset-[0.01em]"
+            className="px-0 text-xs max-sm:text-[10px] text-muted-foreground group-hover:text-foreground focus-visible:ring-offset-[0.01em]"
             variant="link"
             size="sm"
             asChild
@@ -275,6 +276,7 @@ export default function Page() {
           </Button>
           excellent work
         </div>
+        <ToggleTheme className="flex shrink-0 rounded-full transition-all text-muted-foreground hover:text-foreground hover:bg-transparent ring-inset"/>
       </footer>
     </main>
   );

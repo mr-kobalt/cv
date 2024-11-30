@@ -35,6 +35,7 @@ function HoverPopover(name: string, tooltip: string) {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         className="outline-offset-2 rounded-md"
+        asChild
       >
         <Badge
           className="px-1 py-0 text-[10px] print:px-1 print:py-0.5 print:text-[8px] print:leading-tight"
@@ -46,7 +47,8 @@ function HoverPopover(name: string, tooltip: string) {
       </PopoverTrigger>
       {tooltip ?
         <PopoverContent
-          className="bg-neutral-700 rounded-xl font-mono text-popover text-sm text-pretty w-auto max-w-xs md:max-w-[400px] print:hidden"
+          // className="bg-neutral-700 rounded-xl font-mono text-popover text-sm text-pretty w-auto max-w-xs md:max-w-[400px] print:hidden"
+          className="bg-primary rounded-xl font-mono text-popover text-sm text-pretty w-auto max-w-xs md:max-w-[400px] print:hidden"
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >

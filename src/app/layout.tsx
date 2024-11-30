@@ -6,6 +6,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import React from "react";
 import { Printer } from "@/components/printer";
+import { ThemeProvider } from "@/components/theme-provider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -26,12 +27,20 @@ export default function RootLayout({
   const ymetrika = Number(process.env.YMETRIKA);
 
   return (
-    <html lang="ru-RU" className={inter.className}>
+    <html lang="ru-RU" className={inter.className} suppressHydrationWarning>
       <body className="overflow-x-clip">
-        <div className="transform-none lg:scale-125 origin-top">
-          {children}
-        </div>
-        <Printer/>
+        <ThemeProvider
+          // attribute="data-mode"
+          attribute="class"
+          defaultTheme="light"
+          enableSystem={false}
+          disableTransitionOnChange
+        >
+          <div className="transform-none lg:scale-125 origin-top">
+            {children}
+          </div>
+          <Printer />
+        </ThemeProvider>
         <MetrikaScript id={ymetrika} />
       </body>
       <Analytics />
