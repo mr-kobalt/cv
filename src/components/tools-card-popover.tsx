@@ -12,7 +12,7 @@ import { useState } from "react";
 import { useDebounce } from "@uidotdev/usehooks";
 
 interface Props {
-  className: string;
+  className?: string;
   title: string;
   tags: readonly any[];
 }

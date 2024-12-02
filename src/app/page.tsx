@@ -143,7 +143,7 @@ export default function Page() {
                       href={social.url}
                     >
                       <social.icon className="size-3"/>
-                      {social.url}
+                      {social.url?.replace("https://", "").replace("www.", "")}
                     </a>
                   </Button>
                 ))}
@@ -162,19 +162,17 @@ export default function Page() {
             {RESUME_DATA.summary}
           </p>
 
-          <div className="-mx-3 grid gap-3 grid-cols-1 md:grid-cols-3 print:grid-cols-12 print:gap-0 print:mx-0 print:border-none">
-              <AboutCard
+          <div className="-mx-3 grid gap-3 grid-cols-2 max-sm:grid-cols-1 print:mx-0 print:border-none">
+              {/* <AboutCard
                 className="print:col-span-3"
                 title="Качества"
                 tags={RESUME_DATA.qualities}
-              />
+              /> */}
               <AboutCard
-                className="md:col-span-2 print:col-span-5"
                 title="Навыки"
                 tags={RESUME_DATA.skills}
               />
               <ToolsCard
-                className="md:col-span-3 print:col-span-4"
                 title="Инструменты"
                 tags={RESUME_DATA.tools}
               />
