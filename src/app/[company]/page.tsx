@@ -1,7 +1,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Metadata } from "next";
 import { Section } from "@/components/ui/section";
-import { MapPin, MailIcon, PhoneIcon } from "lucide-react";
+import { MapPin, MailIcon, PhoneIcon, GlobeIcon } from "lucide-react";
 import { GitHubIcon } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import parsePhoneNumber from 'libphonenumber-js';
@@ -15,13 +15,25 @@ import { ProjectCard } from "@/components/project-card";
 import { Separator } from "@/components/ui/separator";
 import { ToggleTheme } from "@/components/theme-toggle";
 import Image from "next/image";
+import { redirect } from "next/navigation";
+import { headers } from "next/headers";
 
 export const metadata: Metadata = {
   title: `${RESUME_DATA.name} | ${RESUME_DATA.about}`,
   description: RESUME_DATA.summary,
 };
 
-export default function Page() {
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ company: string }>
+}) {
+  const company = (await params).company
+
+  if(!RESUME_DATA.cover_letter.hasOwnProperty(company)) {
+    redirect('/')
+  }
+
   return (
     <main className="container relative mx-auto scroll-my-12 overflow-auto px-4 pt-4 print:pt-0 md:pt-16">
       <section className="mx-auto w-full max-w-2xl space-y-8 print:space-y-4">
@@ -145,7 +157,7 @@ export default function Page() {
                       href={social.url}
                     >
                       <social.icon className="size-3"/>
-                      {social.url?.replace("https://", "").replace("www.", "")}
+                      {social.url?.replace("https://", "").replace("www.", "").concat(social.name === 'Website' ? "/"+company : "")}
                     </a>
                   </Button>
                 ))}
@@ -158,6 +170,24 @@ export default function Page() {
             </Avatar>
           </div>
         </div>
+
+        <Section>
+          <h2 className="flex items-center justify-between gap-2 text-xl font-bold max-sm:flex-col-reverse max-sm:items-start">
+            Сопроводительное письмо
+            <Image
+              src={RESUME_DATA.cover_letter.qsoft.logo}
+              alt={RESUME_DATA.cover_letter.qsoft.title}
+            />
+          </h2>
+            {RESUME_DATA.cover_letter.qsoft.letter.map((paragraph, index) => {
+              return (
+                <Markdown key={index}
+                  className="text-pretty font-mono text-sm text-muted-foreground print:text-[12px]"
+                >
+                  {paragraph}
+                </Markdown>
+            )})}
+        </Section>
 
         <Section>
           <h2 className="text-xl font-bold">Обо мне</h2>
@@ -230,7 +260,7 @@ export default function Page() {
         </Section> */}
 
         {/* <Section className="print-force-new-page scroll-mb-16"> */}
-        <Section className="scroll-mb-16">
+        <Section className="scroll-mb-16 print-force-new-page">
           <h2 className="text-xl font-bold">Проекты</h2>
           <div className="-mx-3 grid grid-cols-1 gap-3 print:grid-cols-4 print:gap-2 md:grid-cols-2 lg:grid-cols-3 print:mx-0">
             {RESUME_DATA.projects.map((project) => {

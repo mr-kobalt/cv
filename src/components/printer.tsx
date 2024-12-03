@@ -24,7 +24,7 @@ export function Printer ({className=""}: Props) {
     <Button
       className={"fixed transform-none bottom-4 right-4 size-16 rounded-full shadow-2xl print:hidden "+className}
       onClick={() => window.print()}
-      title="Print cv button"
+      title="Напечатать резюме"
     >
       <PrinterIcon />
     </Button>

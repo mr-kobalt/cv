@@ -15,7 +15,8 @@ import ParabolLogo from "./parabol.svg";
 import TastyCloudLogo from "./tastycloud.png";
 import YearProgressLogo from "./yearprogress.svg";
 import Minimal from "./minimal.svg";
-import IMBA from "./imba.png"
+import IMBA from "./imba.png";
+import QSOFT from "./qsoft_logo.svg"
 
 export {
   ConsultlyLogo,
@@ -36,4 +37,5 @@ export {
   YearProgressLogo,
   Minimal,
   IMBA,
+  QSOFT,
 };

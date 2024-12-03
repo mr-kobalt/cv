@@ -90,3 +90,7 @@
   @apply border-card-foreground;
   @apply border-2;
 }
+
+a:hover {
+  text-decoration: underline;
+}
