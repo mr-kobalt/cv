@@ -54,7 +54,7 @@ function HoverPopover(name: string, tooltip: string) {
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          <Markdown components={{ p: React.Fragment}}>{tooltip}</Markdown>
+          <Markdown components={{ p: ({ children }) => <>{children}</>}}>{tooltip}</Markdown>
         </PopoverContent>
       : null}
     </Popover>

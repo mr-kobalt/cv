@@ -46,10 +46,9 @@ export default async function Page(
   }
 
   let variant_data = RESUME_DATA.variants[variant]
-  let about = variant_data['about' as keyof typeof variant_data] ?? RESUME_DATA.about
-  let summary = variant_data['summary' as keyof typeof variant_data] ?? RESUME_DATA.summary
-  let cover_letter = variant_data['cover_letter' as keyof typeof variant_data] ?? RESUME_DATA.cover_letter
-  // let cover_letter_letter = cover_letter ? cover_letter.letter
+  let about = variant_data.about ?? RESUME_DATA.about
+  let summary = variant_data.summary ?? RESUME_DATA.summary
+  let cover_letter = variant_data.cover_letter ?? RESUME_DATA.cover_letter
 
   return (
     <main className="container relative mx-auto scroll-my-12 overflow-auto px-4 pt-4 print:pt-0 md:pt-16">
@@ -195,14 +194,14 @@ export default async function Page(
           <Section>
             <h2 className="flex items-center justify-between gap-2 text-xl font-bold max-sm:flex-col-reverse max-sm:items-start">
               Сопроводительное письмо
-              {cover_letter['logo' as keyof typeof cover_letter] ? (
+              {cover_letter.logo ? (
                 <Image
-                  src={cover_letter['logo' as keyof typeof cover_letter]}
-                  alt={cover_letter['title' as keyof typeof cover_letter]}
+                  src={cover_letter.logo}
+                  alt={cover_letter.title}
                 />
               ) : null}
             </h2>
-              {cover_letter['letter' as keyof typeof cover_letter].map((paragraph, index) => {
+              {cover_letter.letter.map((paragraph, index) => {
                 return (
                   <Markdown
                     key={index}
@@ -298,10 +297,10 @@ export default async function Page(
                   title={project.title}
                   description={project.description}
                   description_short={project.description_short}
-                  problems={"problems" in project ? project.problems : undefined}
-                  result={"result" in project ? project.result : undefined}
+                  problems={project.problems ?? undefined}
+                  result={project.result ?? undefined}
                   tags={project.techStack}
-                  link={"link" in project ? project.link.href : undefined}
+                  link={project.link ? project.link.href : undefined}
                   images={"images" in project ? project.images : undefined}
                   className="transition-colors hover:border-gray-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none print:border-none print:p-0"
                 />
