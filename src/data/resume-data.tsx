@@ -290,7 +290,7 @@ export let RESUME_DATA: Resume = {
         "интегрировали Битрикс24 с 1С:КА и сайтом",
         "провели обучение и аттестацию сотрудников",
       ],
-      images: screenshots.b24
+      // images: screenshots.b24
     },
     {
       title: "Система управления заказами",
