@@ -3,7 +3,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Metadata, ResolvingMetadata } from "next";
 import { Section } from "@/components/ui/section";
 import { MapPin, MailIcon, PhoneIcon, GlobeIcon } from "lucide-react";
-import { GitHubIcon } from "@/components/icons";
+import { GitHubIcon, MetaLeadLogo } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import parsePhoneNumber from 'libphonenumber-js';
 import Markdown from 'react-markdown';
@@ -16,7 +16,7 @@ import { WorkCard } from "@/components/work-card";
 import { ProjectCard } from "@/components/project-card";
 import { Separator } from "@/components/ui/separator";
 import { ToggleTheme } from "@/components/theme-toggle";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { redirect } from "next/navigation";
 
 type Props = {
@@ -195,10 +195,7 @@ export default async function Page(
             <h2 className="flex items-center justify-between gap-2 text-xl font-bold max-sm:flex-col-reverse max-sm:items-start">
               Сопроводительное письмо
               {cover_letter.logo ? (
-                <Image
-                  src={cover_letter.logo}
-                  alt={cover_letter.title}
-                />
+                <cover_letter.logo className="h-8"/>
               ) : null}
             </h2>
               {cover_letter.letter.map((paragraph, index) => {

@@ -17,6 +17,7 @@ import YearProgressLogo from "./yearprogress.svg";
 import Minimal from "./minimal.svg";
 import IMBA from "./imba.png";
 import QSOFT from "./qsoft_logo.svg"
+import MetaLead from "./metalead.svg"
 
 export {
   ConsultlyLogo,
@@ -38,4 +39,5 @@ export {
   Minimal,
   IMBA,
   QSOFT,
+  MetaLead
 };
