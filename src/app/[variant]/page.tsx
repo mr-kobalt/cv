@@ -1,11 +1,13 @@
+import React from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Metadata } from "next";
+import { Metadata, ResolvingMetadata } from "next";
 import { Section } from "@/components/ui/section";
 import { MapPin, MailIcon, PhoneIcon, GlobeIcon } from "lucide-react";
 import { GitHubIcon } from "@/components/icons";
 import { Button } from "@/components/ui/button";
 import parsePhoneNumber from 'libphonenumber-js';
 import Markdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 import { RESUME_DATA } from "@/data/resume-data";
 import { AboutCard } from "@/components/about-card";
@@ -16,23 +18,38 @@ import { Separator } from "@/components/ui/separator";
 import { ToggleTheme } from "@/components/theme-toggle";
 import Image from "next/image";
 import { redirect } from "next/navigation";
-import { headers } from "next/headers";
 
-export const metadata: Metadata = {
-  title: `${RESUME_DATA.name} | ${RESUME_DATA.about}`,
-  description: RESUME_DATA.summary,
-};
+type Props = {
+  params: Promise<{ variant: string }>
+}
 
-export default async function Page({
-  params,
-}: {
-  params: Promise<{ company: string }>
-}) {
-  const company = (await params).company
+export async function generateMetadata(
+  { params }: Props
+): Promise<Metadata> {
+  const variant = (await params).variant as keyof typeof RESUME_DATA.variants
+  const summary = ( RESUME_DATA.variants[variant] as any ).summary as 'string' | undefined
+  const about = ( RESUME_DATA.variants[variant] as any ).about as 'string' | undefined
 
-  if(!RESUME_DATA.cover_letter.hasOwnProperty(company)) {
-    redirect('/')
+  return {
+    title: `${RESUME_DATA.name} | ${about ?? RESUME_DATA.about}`,
+    description: summary ?? RESUME_DATA.summary,
   }
+}
+
+export default async function Page(
+  { params }: Props
+) {
+  const variant = (await params).variant as keyof typeof RESUME_DATA.variants
+
+  if(!RESUME_DATA.variants.hasOwnProperty(variant)) {
+    redirect('/default')
+  }
+
+  let variant_data = RESUME_DATA.variants[variant]
+  let about = variant_data['about' as keyof typeof variant_data] ?? RESUME_DATA.about
+  let summary = variant_data['summary' as keyof typeof variant_data] ?? RESUME_DATA.summary
+  let cover_letter = variant_data['cover_letter' as keyof typeof variant_data] ?? RESUME_DATA.cover_letter
+  // let cover_letter_letter = cover_letter ? cover_letter.letter
 
   return (
     <main className="container relative mx-auto scroll-my-12 overflow-auto px-4 pt-4 print:pt-0 md:pt-16">
@@ -42,9 +59,12 @@ export default async function Page({
           <div className="flex items-center justify-between">
             <div className="flex-1 space-y-1.5">
               <h1 className="text-2xl font-bold hidden sm:block">{RESUME_DATA.name}</h1>
-              <p className="max-w-md text-pretty font-mono text-sm text-muted-foreground print:text-[12px]">
-                {RESUME_DATA.about}
-              </p>
+              <Markdown
+                remarkPlugins={[remarkGfm]}
+                // components={{ p: React.Fragment, }}
+                className="max-w-md text-pretty font-mono text-sm text-muted-foreground print:text-[12px]">
+                {about}
+              </Markdown>
               <p className="max-w-md items-center text-pretty font-mono text-xs text-muted-foreground print:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
                 <a
                   className="inline-flex gap-x-1.5 align-baseline leading-none hover:underline"
@@ -157,7 +177,7 @@ export default async function Page({
                       href={social.url}
                     >
                       <social.icon className="size-3"/>
-                      {social.url?.replace("https://", "").replace("www.", "").concat(social.name === 'Website' ? "/"+company : "")}
+                      {social.url?.replace("https://", "").replace("www.", "").concat(social.name === 'Website' ? "/"+variant : "")}
                     </a>
                   </Button>
                 ))}
@@ -171,29 +191,37 @@ export default async function Page({
           </div>
         </div>
 
-        <Section>
-          <h2 className="flex items-center justify-between gap-2 text-xl font-bold max-sm:flex-col-reverse max-sm:items-start">
-            Сопроводительное письмо
-            <Image
-              src={RESUME_DATA.cover_letter.qsoft.logo}
-              alt={RESUME_DATA.cover_letter.qsoft.title}
-            />
-          </h2>
-            {RESUME_DATA.cover_letter.qsoft.letter.map((paragraph, index) => {
-              return (
-                <Markdown key={index}
-                  className="text-pretty font-mono text-sm text-muted-foreground print:text-[12px]"
-                >
-                  {paragraph}
-                </Markdown>
-            )})}
-        </Section>
+        {cover_letter ? (
+          <Section>
+            <h2 className="flex items-center justify-between gap-2 text-xl font-bold max-sm:flex-col-reverse max-sm:items-start">
+              Сопроводительное письмо
+              {cover_letter['logo' as keyof typeof cover_letter] ? (
+                <Image
+                  src={cover_letter['logo' as keyof typeof cover_letter]}
+                  alt={cover_letter['title' as keyof typeof cover_letter]}
+                />
+              ) : null}
+            </h2>
+              {cover_letter['letter' as keyof typeof cover_letter].map((paragraph, index) => {
+                return (
+                  <Markdown
+                    key={index}
+                    // remarkPlugins={[remarkGfm]}
+                    className="text-pretty font-mono text-sm text-muted-foreground print:text-[12px]"
+                  >
+                    {paragraph}
+                  </Markdown>
+              )})}
+          </Section>
+        ) : null}
 
         <Section>
           <h2 className="text-xl font-bold">Обо мне</h2>
-          <p className="text-pretty font-mono text-sm text-muted-foreground print:text-[12px]">
-            {RESUME_DATA.summary}
-          </p>
+          <Markdown
+            remarkPlugins={[remarkGfm]}
+            className="text-pretty font-mono text-sm text-muted-foreground print:text-[12px]">
+              {summary}
+          </Markdown>
 
           <div className="-mx-3 grid gap-3 grid-cols-2 max-sm:grid-cols-1 print:mx-0 print:border-none">
               {/* <AboutCard
@@ -260,7 +288,7 @@ export default async function Page({
         </Section> */}
 
         {/* <Section className="print-force-new-page scroll-mb-16"> */}
-        <Section className="scroll-mb-16 print-force-new-page">
+        <Section className={"scroll-mb-16".concat(" ", cover_letter ? " print-force-new-page" : "")}>
           <h2 className="text-xl font-bold">Проекты</h2>
           <div className="-mx-3 grid grid-cols-1 gap-3 print:grid-cols-4 print:gap-2 md:grid-cols-2 lg:grid-cols-3 print:mx-0">
             {RESUME_DATA.projects.map((project) => {

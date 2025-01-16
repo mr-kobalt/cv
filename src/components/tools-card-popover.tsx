@@ -9,7 +9,9 @@ import {
 import { Badge } from "./ui/badge";
 import { Popover, PopoverTrigger, PopoverContent } from "./ui/popover"
 import { useState } from "react";
+import React from "react";
 import { useDebounce } from "@uidotdev/usehooks";
+import Markdown from 'react-markdown';
 
 interface Props {
   className?: string;
@@ -52,7 +54,7 @@ function HoverPopover(name: string, tooltip: string) {
           onMouseEnter={handleMouseEnter}
           onMouseLeave={handleMouseLeave}
         >
-          {tooltip}
+          <Markdown components={{ p: React.Fragment}}>{tooltip}</Markdown>
         </PopoverContent>
       : null}
     </Popover>

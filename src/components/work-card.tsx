@@ -17,6 +17,8 @@ import {
   CollapsibleTrigger,
   CollapsibleContent
 } from "./ui/collapsible";
+import Markdown from 'react-markdown';
+
 
 interface Props {
   company: string;
@@ -87,18 +89,18 @@ export function WorkCard({
           </CardHeader>
           <CardContent className="flex gap-2 mt-2 text-xs print:text-[10px]">
             <div>
-              <div>{description}</div>
+              <div><Markdown components={{ p: React.Fragment}}>{description}</Markdown></div>
               <CollapsibleContent
                 className="text-xs print:text-[10px] print:hidden data-[state=closed]:animate-slideUp data-[state=open]:animate-slideDown"
               >
                 <h4 className="mt-2 text-sm font-semibold">Обязанности</h4>
-                <div className="text-xs print:text-[10px]">{responsibility}</div>
+                <div className="text-xs print:text-[10px]"><Markdown components={{ p: React.Fragment}}>{responsibility}</Markdown></div>
                 {achievements ? (
                   <div>
                     <h4 className="mt-2 text-sm font-semibold">Достижения</h4>
                     <ul className="ml-6 text-xs print:text-[10px] list-square">
                       {achievements.map((achievement) => (
-                        <li key={achievement}>{achievement}</li>
+                        <li key={achievement}><Markdown components={{ p: React.Fragment}}>{achievement}</Markdown></li>
                       ))}
                     </ul>
                   </div>
@@ -108,7 +110,7 @@ export function WorkCard({
                     <h4 className="mt-2 text-sm font-semibold">Почему ушёл</h4>
                     <ul className="ml-6 text-xs print:text-[10px] list-square">
                       {quit.map((quit) => (
-                        <li key={quit}>{quit}</li>
+                        <li key={quit}><Markdown components={{ p: React.Fragment}}>{quit}</Markdown></li>
                       ))}
                     </ul>
                   </div>
