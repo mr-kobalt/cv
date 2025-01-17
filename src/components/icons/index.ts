@@ -5,5 +5,7 @@ import { TelegramIcon } from "./TelegramIcon";
 import { MetaLeadLogo } from "./MetaLeadLogo";
 import { QSoftLogo } from "./QSoftLogo";
 import { SapeLogo } from "./SapeLogo";
+import { OkkamLogo } from "./OkkamLogo";
 
-export { GitHubIcon, LinkedInIcon, XIcon, TelegramIcon, MetaLeadLogo, QSoftLogo, SapeLogo };
+
+export { GitHubIcon, LinkedInIcon, XIcon, TelegramIcon, MetaLeadLogo, QSoftLogo, SapeLogo, OkkamLogo };

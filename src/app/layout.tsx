@@ -43,9 +43,9 @@ export default function RootLayout({
           <Printer />
         </ThemeProvider>
         <MetrikaScript id={ymetrika} />
+        <Analytics />
+        <SpeedInsights />
       </body>
-      <Analytics />
-      <SpeedInsights />
     </html>
   );
 }
