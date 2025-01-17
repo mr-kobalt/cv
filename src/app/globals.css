@@ -94,3 +94,15 @@
 a:hover {
   text-decoration: underline;
 }
+
+code {
+  @apply relative;
+  @apply rounded;
+  @apply border;
+  @apply px-[0.3rem];
+  @apply py-[0.1rem];
+  @apply font-mono;
+  @apply text-sm;
+  @apply bg-muted;
+  @apply text-muted-foreground;
+}
