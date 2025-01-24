@@ -7,6 +7,17 @@ import { QSoftLogo } from "./QSoftLogo";
 import { SapeLogo } from "./SapeLogo";
 import { OkkamLogo } from "./OkkamLogo";
 import { KeptLogo } from "./KeptLogo";
+import { AdengiLogo } from "./AdengiLogo";
 
-
-export { GitHubIcon, LinkedInIcon, XIcon, TelegramIcon, MetaLeadLogo, QSoftLogo, SapeLogo, OkkamLogo, KeptLogo };
+export {
+  GitHubIcon,
+  LinkedInIcon,
+  XIcon,
+  TelegramIcon,
+  MetaLeadLogo,
+  QSoftLogo,
+  SapeLogo,
+  OkkamLogo,
+  KeptLogo,
+  AdengiLogo
+};

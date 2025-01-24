@@ -1,4 +1,4 @@
-import { KeptLogo, MetaLeadLogo, OkkamLogo, QSoftLogo, SapeLogo } from "@/components/icons";
+import { AdengiLogo, KeptLogo, MetaLeadLogo, OkkamLogo, QSoftLogo, SapeLogo } from "@/components/icons";
 import screenshots from "@/images/screenshots"
 import { IconType, SiTelegram,  } from '@icons-pack/react-simple-icons';
 import { GlobeIcon } from "lucide-react";
@@ -96,6 +96,19 @@ export let RESUME_DATA: Resume = {
     data: {
       about: "~~Операционный директор~~ Data Analyst / Data Scientist",
       summary: "Перезапускаю карьеру. Хочу сфокусироваться на\u00a0**создании продуктов** основанных на\u00a0**анализе данных** и\u00a0**машинном обучении**. **14\u00a0лет** развивал IT-интеграторов России. Люблю IT во\u00a0всех проявлениях. Склонен к\u00a0системному подходу и\u00a0анализу данных. Изучаю мануалы прежде чем спросить. Выбираю обучение через практику. Пропагандирую data-driven и\u00a0вероятностный подходы в\u00a0бизнесе (и\u00a0жизни). Стремлюсь участвовать в\u00a0сложных и\u00a0полезных проектах. Люблю ответственность."
+    },
+    adengi: {
+      about: "~~Операционный директор~~ Data Analyst / Data Scientist",
+      cover_letter: {
+        title: "А Деньги",
+        logo: AdengiLogo,
+        letter: [
+          "Добрый день, уважаемый представитель **[А Деньги](https://adengi.ru)**!",
+          "Предлагаю рассмотреть моё резюме на должность **[Стажер Data scientist](https://hh.ru/vacancy/115928521)**. Я перезапускаю карьеру в IT и хочу сфокусироваться на\u00a0**создании продуктов** основанных на\u00a0**анализе данных** и\u00a0**машинном обучении**.",
+          "Знаком и использовал в работе **Python**, **SQL**, **git**, **Docker**, **PostgreSQL**, **Gitlab**, **JupyterHub**. Общие знания data science, полученные на курсах Беркли (**[CS188.1x: Artificial Intelligence](https://s3.amazonaws.com/verify.edx.org/downloads/c225eda00e114d10947c19c054d5e641/Certificate.pdf)**) и за чтением научпопа по теме. Благодаря опыту создания компании с нуля очень хорошо понимаю бизнес, экономику, бухгалтерский учет, финансовые данные, системы планирования и управленческого учета.",
+          "Буду рад обсудить возможное сотрудничество."
+        ]
+      }
     },
     kept: {
       about: "~~Операционный директор~~ Data Analyst / Data Scientist",
