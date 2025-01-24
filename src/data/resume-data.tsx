@@ -1,4 +1,4 @@
-import { MetaLeadLogo, OkkamLogo, QSoftLogo, SapeLogo } from "@/components/icons";
+import { KeptLogo, MetaLeadLogo, OkkamLogo, QSoftLogo, SapeLogo } from "@/components/icons";
 import screenshots from "@/images/screenshots"
 import { IconType, SiTelegram,  } from '@icons-pack/react-simple-icons';
 import { GlobeIcon } from "lucide-react";
@@ -94,8 +94,21 @@ export let RESUME_DATA: Resume = {
     // do not delete `default`
     default: {},
     data: {
-      about: "~~Операционный директор~~ Аналитик данных, data scientist",
+      about: "~~Операционный директор~~ Data Analyst / Data Scientist",
       summary: "Перезапускаю карьеру. Хочу сфокусироваться на\u00a0**создании продуктов** основанных на\u00a0**анализе данных** и\u00a0**машинном обучении**. **14\u00a0лет** развивал IT-интеграторов России. Люблю IT во\u00a0всех проявлениях. Склонен к\u00a0системному подходу и\u00a0анализу данных. Изучаю мануалы прежде чем спросить. Выбираю обучение через практику. Пропагандирую data-driven и\u00a0вероятностный подходы в\u00a0бизнесе (и\u00a0жизни). Стремлюсь участвовать в\u00a0сложных и\u00a0полезных проектах. Люблю ответственность."
+    },
+    kept: {
+      about: "~~Операционный директор~~ Data Analyst / Data Scientist",
+      cover_letter: {
+        title: "kept",
+        logo: KeptLogo,
+        letter: [
+          "Добрый день, уважаемый представитель **[kept](https://kept.ru)**!",
+          "Предлагаю рассмотреть моё резюме на должность **[Стажер, Data Analyst / Data Scientist](https://hh.ru/vacancy/116034730)**. Я перезапускаю карьеру в IT и хочу сфокусироваться на\u00a0**создании продуктов** основанных на\u00a0**анализе данных** и\u00a0**машинном обучении**.",
+          "Знаком и использовал в работе **Python**, **SQL**, **git**. Участвовал в проектировании баз данных, строил ER-диаграммы, учитывал нормализацию. Понимаю принципы ООП, базовые структуры данных. Общие знания data science, полученные на курсах Беркли (**[CS188.1x: Artificial Intelligence](https://s3.amazonaws.com/verify.edx.org/downloads/c225eda00e114d10947c19c054d5e641/Certificate.pdf)**) и за чтением научпопа по теме. Благодаря опыту создания компании с нуля очень хорошо понимаю бизнес, экономику, бухгалтерский учет, финансовые данные, системы планирования и управленческого учета.",
+          "Буду рад обсудить возможное сотрудничество."
+        ]
+      }
     },
     okkam: {
       about: "~~Операционный директор~~ Data Scientist",
