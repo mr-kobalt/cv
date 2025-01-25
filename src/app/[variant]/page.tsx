@@ -195,7 +195,7 @@ export default async function Page(
             <h2 className="flex items-center justify-between gap-2 text-xl font-bold max-sm:flex-col-reverse max-sm:items-start">
               Сопроводительное письмо
               {cover_letter.logo ? (
-                <cover_letter.logo className="h-8"/>
+                <cover_letter.logo className="h-8 w-auto"/>
               ) : null}
             </h2>
               {cover_letter.letter.map((paragraph, index) => {

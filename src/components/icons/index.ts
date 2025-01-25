@@ -8,6 +8,7 @@ import { SapeLogo } from "./SapeLogo";
 import { OkkamLogo } from "./OkkamLogo";
 import { KeptLogo } from "./KeptLogo";
 import { AdengiLogo } from "./AdengiLogo";
+import { LeftJoinLogo } from "./LeftJoinLogo";
 
 export {
   GitHubIcon,
@@ -19,5 +20,6 @@ export {
   SapeLogo,
   OkkamLogo,
   KeptLogo,
-  AdengiLogo
+  AdengiLogo,
+  LeftJoinLogo
 };

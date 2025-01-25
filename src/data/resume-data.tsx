@@ -1,4 +1,4 @@
-import { AdengiLogo, KeptLogo, MetaLeadLogo, OkkamLogo, QSoftLogo, SapeLogo } from "@/components/icons";
+import { AdengiLogo, KeptLogo, LeftJoinLogo, MetaLeadLogo, OkkamLogo, QSoftLogo, SapeLogo } from "@/components/icons";
 import screenshots from "@/images/screenshots"
 import { IconType, SiTelegram,  } from '@icons-pack/react-simple-icons';
 import { GlobeIcon } from "lucide-react";
@@ -96,6 +96,20 @@ export let RESUME_DATA: Resume = {
     data: {
       about: "~~Операционный директор~~ Data Analyst / Data Scientist",
       summary: "Перезапускаю карьеру. Хочу сфокусироваться на\u00a0**создании продуктов** основанных на\u00a0**анализе данных** и\u00a0**машинном обучении**. **14\u00a0лет** развивал IT-интеграторов России. Люблю IT во\u00a0всех проявлениях. Склонен к\u00a0системному подходу и\u00a0анализу данных. Изучаю мануалы прежде чем спросить. Выбираю обучение через практику. Пропагандирую data-driven и\u00a0вероятностный подходы в\u00a0бизнесе (и\u00a0жизни). Стремлюсь участвовать в\u00a0сложных и\u00a0полезных проектах. Люблю ответственность."
+    },
+    leftjoin: {
+      about: "~~Операционный директор~~ Data Analyst",
+      cover_letter: {
+        title: "LeftJoin",
+        logo: LeftJoinLogo,
+        letter: [
+          "Привет, **[LeftJoin](https://leftjoin.ru)**!",
+          "Хочу присоединиться к твоей команде в качестве джуна на должность **[Data Analyst](https://valiotti-analytics.notion.site/Data-Analyst-Junior-96f04d3638bb462481bac6c3b1028f3b)**. Я перезапускаю карьеру в IT и хочу сфокусироваться на\u00a0**создании продуктов** основанных на\u00a0**анализе данных** и\u00a0**машинном обучении**. В данный момент прохожу курсы аналитика данных в **Яндекс.Практикум**.",
+          "Знаком и использовал в работе **Python**, **SQL**, **bash**, **git**, **Docker**, **PostgreSQL**, **Gitlab**, **JupyterHub**, **DataLens**. Субъективно английский на уровне B2, по крайней мере знакомый норвежец так мне говорил. Благодаря опыту создания и развития компании очень хорошо понимаю бизнес, экономику, бухгалтерский, финансовый и управленческий учёт.",
+          "**LeftJoin** заинтересовала меня как компания (**1**) работающая в интересующей меня сфере (аналитика данных как конечный продукт), (**2**) подходом к самопрезентации (как вы преподносите свою работу, делитесь успехами и опытом).",
+          "Буду рад обсудить возможное сотрудничество."
+        ]
+      }
     },
     adengi: {
       about: "~~Операционный директор~~ Data Analyst / Data Scientist",

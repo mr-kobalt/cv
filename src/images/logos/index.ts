@@ -18,6 +18,8 @@ import Minimal from "./minimal.svg";
 import IMBA from "./imba.png";
 import QSOFT from "./qsoft_logo.svg"
 import MetaLead from "./metalead.svg"
+import LeftJoin from "./left-join-logo.png"
+
 
 export {
   ConsultlyLogo,
@@ -39,5 +41,6 @@ export {
   Minimal,
   IMBA,
   QSOFT,
-  MetaLead
+  MetaLead,
+  LeftJoin
 };
