@@ -58,12 +58,16 @@ export default async function Page(
           <div className="flex items-center justify-between">
             <div className="flex-1 space-y-1.5">
               <h1 className="text-2xl font-bold hidden sm:block">{RESUME_DATA.name}</h1>
-              <Markdown
-                remarkPlugins={[remarkGfm]}
+              <div
+                className="max-w-md text-pretty font-mono text-sm text-muted-foreground print:text-[12px]"
                 // components={{ p: React.Fragment, }}
-                className="max-w-md text-pretty font-mono text-sm text-muted-foreground print:text-[12px]">
-                {about}
-              </Markdown>
+                >
+                <Markdown
+                  remarkPlugins={[remarkGfm]}
+                >
+                  {about}
+                </Markdown>
+              </div>
               <p className="max-w-md items-center text-pretty font-mono text-xs text-muted-foreground print:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
                 <a
                   className="inline-flex gap-x-1.5 align-baseline leading-none hover:underline"
@@ -200,24 +204,30 @@ export default async function Page(
             </h2>
               {cover_letter.letter.map((paragraph, index) => {
                 return (
-                  <Markdown
+                  <div
                     key={index}
                     // remarkPlugins={[remarkGfm]}
                     className="text-pretty font-mono text-sm text-muted-foreground print:text-[12px]"
                   >
-                    {paragraph}
-                  </Markdown>
+                    <Markdown>
+                      {paragraph}
+                    </Markdown>
+                  </div>
               )})}
           </Section>
         ) : null}
 
         <Section>
           <h2 className="text-xl font-bold">Обо мне</h2>
-          <Markdown
-            remarkPlugins={[remarkGfm]}
-            className="text-pretty font-mono text-sm text-muted-foreground print:text-[12px]">
-              {summary}
-          </Markdown>
+          <div
+            className="text-pretty font-mono text-sm text-muted-foreground print:text-[12px]"
+            >
+            <Markdown
+              remarkPlugins={[remarkGfm]}
+            >
+                {summary}
+            </Markdown>
+          </div>
 
           <div className="-mx-3 grid gap-3 grid-cols-2 max-sm:grid-cols-1 print:mx-0 print:border-none">
               {/* <AboutCard
