@@ -68,7 +68,7 @@ export default async function Page(
                   {about}
                 </Markdown>
               </div>
-              <p className="max-w-md items-center text-pretty font-mono text-xs text-muted-foreground print:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
+              <p className="max-w-md items-center text-pretty font-mono text-xs text-muted-foreground print:hidden focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2">
                 <a
                   className="inline-flex gap-x-1.5 align-baseline leading-none hover:underline"
                   href={RESUME_DATA.locationLink}
@@ -309,7 +309,7 @@ export default async function Page(
                   tags={project.techStack}
                   link={project.link ? project.link.href : undefined}
                   images={"images" in project ? project.images : undefined}
-                  className="transition-colors hover:border-gray-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none print:border-none print:p-0"
+                  className="transition-colors hover:border-gray-300 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none print:border-none print:p-0"
                 />
               );
             })}

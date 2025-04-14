@@ -58,7 +58,7 @@ export function WorkCard({
         <Card key={company} className="group flex flex-col overflow-hidden px-3 py-1">
           <CardHeader>
             <div className="flex items-center justify-between gap-x-2 text-base">
-              <Button variant="ghost" size="icon" className="absolute opacity-0 transition-all group-hover:opacity-50 -ml-9 w-6 h-6 p-0 hidden focus:opacity-100 md:flex print:hidden hover:scale-110 hover:!opacity-100 group-hover:border">
+              <Button variant="ghost" size="icon" className="absolute opacity-0 transition-all group-hover:opacity-50 -ml-9 w-6 h-6 p-0 hidden focus:opacity-100 md:flex print:hidden hover:scale-110 hover:opacity-100! group-hover:border">
                 {open ? <ChevronsDownUp className="h-4 w-4" /> : <ChevronsUpDown className="h-4 w-4"/> }
                 <span className="sr-only">Toggle</span>
               </Button>
@@ -120,7 +120,7 @@ export function WorkCard({
             <Button
               variant="outline"
               size="icon_vertical"
-              className="flex-shrink-0 border-muted print:hidden md:hidden opacity-50 group-hover:opacity-100 transition-all"
+              className="shrink-0 border-muted print:hidden md:hidden opacity-50 group-hover:opacity-100 transition-all"
             >
               {open ? <ChevronsDownUp className="w-4" /> : <ChevronsUpDown className="w-4"/> }
               <span className="sr-only">Toggle</span>
