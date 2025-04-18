@@ -30,7 +30,7 @@ type Contact = {
   social: Social[]
 }
 
-type Tool = {
+type Skill = {
   name: string,
   tooltip?: string
 }
@@ -77,8 +77,8 @@ export type Resume = {
   avatarUrl: string,
   contact: Contact,
   qualities: string[],
-  skills: string[],
-  tools: Tool[],
+  skills:  Skill[],
+  tools: Skill[],
   work: Work[],
   projects: Project[],
 }
@@ -220,16 +220,18 @@ export let RESUME_DATA: Resume = {
     "люблю ответственность",
   ],
   skills: [
-    "стратегическое планирование",
-    "управление проектами",
-    "наставничество",
-    "управление подрядчиками",
-    "ETL",
-    "анализ/визуализация данных",
-    "виртуализация",
-    "контейнеризация",
-    "оптимизация процессов",
-    "английский B2",
+    { name: "стратегическое планирование" },
+    { name: "управление проектами" },
+    { name: "наставничество" },
+    { name: "управление подрядчиками" },
+    { name: "ETL", tooltip: "Extract, transform, load" },
+    { name: "EDA", tooltip: "Exploratory Data Analysis" },
+    { name: "ML", tooltip: "Machine Learning" },
+    { name: "визуализация данных" },
+    { name: "виртуализация" },
+    { name: "контейнеризация" },
+    { name: "оптимизация процессов" },
+    { name: "английский B2", tooltip: "Читаю технические статьи и литературу, смотрю фильмы и лекции, изредка переписываюсь" }
   ],
   tools: [
     {
@@ -258,7 +260,7 @@ export let RESUME_DATA: Resume = {
     },
     {
       name: "GIT",
-      tooltip: "Работал в одиночку, поэтому конфликты слияний разрешать не приходилось",
+      tooltip: "",
     },
     {
       name: "Linux (CentOS/CoreOS/Ubuntu)",

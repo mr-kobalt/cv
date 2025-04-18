@@ -101,7 +101,7 @@ export function ProjectCard({
               <div className="hidden font-mono text-xs underline print:visible">
                 {link?.replace("https://", "").replace("www.", "").replace("/", "")}
               </div>
-              <CardDescription className="font-mono text-xs print:text-[10px]">
+              <CardDescription className="font-mono text-xs print:text-2xs">
                 {description_short}
               </CardDescription>
             </div>
@@ -110,7 +110,7 @@ export function ProjectCard({
             <div className="mt-2 flex flex-wrap-reverse gap-1">
               {tags.map((tag) => (
                 <Badge
-                  className="px-1 py-0 text-[10px] print:px-1 print:py-0.5 print:text-[8px] print:leading-tight"
+                  className="px-1 py-0 text-2xs print:px-1 print:py-0.5 print:text-3xs print:leading-tight"
                   variant="secondary"
                   key={tag}
                 >
@@ -141,7 +141,7 @@ export function ProjectCard({
           </div>
         : null}
         <Card
-          className={"flex flex-col"+(openCarousel ? " md:hidden" : "")}
+          className={"flex bg-background flex-col"+(openCarousel ? " md:hidden" : "")}
           aria-description="Project details"
         >
           <DialogHeader className="text-left">
@@ -169,7 +169,7 @@ export function ProjectCard({
               </CardHeader>
             </DialogTitle>
             <DialogDescription asChild>
-              <CardDescription className="font-normal font-mono text-xs print:text-[10px]">
+              <CardDescription className="font-light font-mono text-xs print:text-2xs">
                 {description ? description : description_short}
               </CardDescription>
             </DialogDescription>
@@ -177,7 +177,7 @@ export function ProjectCard({
           <CardContent>
               <h4 className="mt-2 text-sm font-semibold">Предпосылки</h4>
               {problems ? (
-                <ul className="ml-6 text-xs print:text-[10px] list-square">
+                <ul className="ml-6 text-xs print:text-2xs list-square">
                   {problems.map((problem) => (
                     <li key={problem}>{problem}</li>
                   ))}
@@ -185,7 +185,7 @@ export function ProjectCard({
               ) : null}
               <h4 className="mt-2 text-sm font-semibold">Результат</h4>
               {result ? (
-                <ul className="ml-6 text-xs print:text-[10px] list-square">
+                <ul className="ml-6 text-xs print:text-2xs list-square">
                   {result.map((result) => (
                     <li key={result}>{result}</li>
                   ))}
@@ -196,7 +196,7 @@ export function ProjectCard({
             <div className="mt-2 flex flex-wrap gap-1">
               {tags.map((tag) => (
                 <Badge
-                  className="px-1 py-0 text-[10px] print:px-1 print:py-0.5 print:text-[8px] print:leading-tight"
+                  className="px-1 py-0 text-2xs print:px-1 print:py-0.5 print:text-3xs print:leading-tight"
                   variant="secondary"
                   key={tag}
                 >

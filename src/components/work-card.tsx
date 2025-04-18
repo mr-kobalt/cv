@@ -7,11 +7,6 @@ import {
   CardContent,
 } from "./ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "./ui/button";
-import {
-  ChevronsUpDown,
-  ChevronsDownUp,
-} from "lucide-react";
 import {
   Collapsible,
   CollapsibleTrigger,
@@ -55,15 +50,15 @@ export function WorkCard({
       onOpenChange={setOpen}
     >
       <CollapsibleTrigger asChild>
-        <Card key={company} className="group flex flex-col overflow-hidden px-3 py-1">
+        <Card key={company} className="group bg-background flex flex-col overflow-hidden px-3 py-1">
           <CardHeader>
             <div className="flex items-center justify-between gap-x-2 text-base">
-              <Button variant="ghost" size="icon" className="absolute opacity-0 transition-all group-hover:opacity-50 -ml-9 w-6 h-6 p-0 hidden focus:opacity-100 md:flex print:hidden hover:scale-110 hover:opacity-100! group-hover:border">
-                {open ? <ChevronsDownUp className="h-4 w-4" /> : <ChevronsUpDown className="h-4 w-4"/> }
-                <span className="sr-only">Toggle</span>
-              </Button>
               <h3 className="inline-flex items-center justify-center gap-x-1 font-semibold leading-none">
-                <a className="hover:underline" target="_blank" href={link} onClick={(event) => event.stopPropagation()}>
+                <a
+                  className="hover:underline"
+                  target="_blank"
+                  href={link}
+                  onClick={(event) => event.stopPropagation()}>
                   {company}
                 </a>
 
@@ -71,7 +66,7 @@ export function WorkCard({
                   {badges.map((badge) => (
                     <Badge
                       variant="secondary"
-                      className="align-middle text-xs print:text-[8px] print:leading-tight print:px-1 print:py-0.5"
+                      className="align-middle text-xs print:text-3xs print:leading-tight print:px-1 print:py-0.5"
                       key={badge}
                     >
                       {badge}
@@ -83,22 +78,22 @@ export function WorkCard({
                 {start}&nbsp;- {end ?? "по настоящее время"}
               </div>
             </div>
-            <h4 className="font-mono text-sm leading-none print:text-[12px]">
+            <h4 className="font-mono group-hover:underline max-md:underline decoration-dashed text-sm leading-none print:no-underline print:text-xs">
               {title}
             </h4>
           </CardHeader>
-          <CardContent className="flex gap-2 mt-2 text-xs print:text-[10px]">
+          <CardContent className="flex font-extralight text-foreground gap-2 mt-2 text-xs print:text-2xs">
             <div>
               <div><Markdown components={{ p: ({ children }) => <>{children}</>}}>{description}</Markdown></div>
               <CollapsibleContent
-                className="text-xs print:text-[10px] print:hidden data-[state=closed]:animate-slideUp data-[state=open]:animate-slideDown"
+                className="text-xs print:text-2xs print:hidden data-[state=closed]:animate-slideUp data-[state=open]:animate-slideDown"
               >
                 <h4 className="mt-2 text-sm font-semibold">Обязанности</h4>
-                <div className="text-xs print:text-[10px]"><Markdown components={{ p: ({ children }) => <>{children}</>}}>{responsibility}</Markdown></div>
+                <div className="text-xs print:text-2xs"><Markdown components={{ p: ({ children }) => <>{children}</>}}>{responsibility}</Markdown></div>
                 {achievements ? (
                   <div>
                     <h4 className="mt-2 text-sm font-semibold">Достижения</h4>
-                    <ul className="ml-6 text-xs print:text-[10px] list-square">
+                    <ul className="ml-6 text-xs print:text-2xs list-square">
                       {achievements.map((achievement) => (
                         <li key={achievement}><Markdown components={{ p: ({ children }) => <>{children}</>}}>{achievement}</Markdown></li>
                       ))}
@@ -108,7 +103,7 @@ export function WorkCard({
                 {quit ? (
                   <div>
                     <h4 className="mt-2 text-sm font-semibold">Почему ушёл</h4>
-                    <ul className="ml-6 text-xs print:text-[10px] list-square">
+                    <ul className="ml-6 text-xs print:text-2xs list-square">
                       {quit.map((quit) => (
                         <li key={quit}><Markdown components={{ p: ({ children }) => <>{children}</>}}>{quit}</Markdown></li>
                       ))}
@@ -117,14 +112,6 @@ export function WorkCard({
                 ) : null }
               </CollapsibleContent>
             </div>
-            <Button
-              variant="outline"
-              size="icon_vertical"
-              className="shrink-0 border-muted print:hidden md:hidden opacity-50 group-hover:opacity-100 transition-all"
-            >
-              {open ? <ChevronsDownUp className="w-4" /> : <ChevronsUpDown className="w-4"/> }
-              <span className="sr-only">Toggle</span>
-            </Button>
           </CardContent>
         </Card>
       </CollapsibleTrigger>
