@@ -56,7 +56,7 @@ function HoverPopover ({name, tooltip, variant}: PopoverProps) {
       </PopoverTrigger>
       {tooltip ?
         <PopoverContent
-          className="p-3 rounded-xl font-mono text-xs text-pretty w-auto max-w-md max-md:max-w-[360px] print:hidden"
+          className="p-3 rounded-xl font-mono text-xs leading-5 text-pretty w-auto max-w-md max-md:max-w-[360px] print:hidden"
         >
           <Markdown components={{ p: ({ children }) => <>{children}</>}}>{tooltip}</Markdown>
         </PopoverContent>

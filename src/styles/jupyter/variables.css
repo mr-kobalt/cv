@@ -174,6 +174,7 @@ all of MD as it is not optimized for dense, information rich UIs.
   --jp-content-font-color3: rgba(0, 0, 0, 0.38);
   --jp-content-link-color: var(--md-blue-900, #0d47a1);
   --jp-content-link-visited-color: var(--md-purple-700, #7b1fa2);
+  /* --jp-content-font-family: var(--font-sans); */
   --jp-content-font-family: system-ui, -apple-system, blinkmacsystemfont,
     'Segoe UI', helvetica, arial, sans-serif, 'Apple Color Emoji',
     'Segoe UI Emoji', 'Segoe UI Symbol';
@@ -189,6 +190,7 @@ all of MD as it is not optimized for dense, information rich UIs.
   --jp-code-padding: 5px; /* 5px for 13px base, codemirror highlighting needs integer px value */
   --jp-code-font-family-default: menlo, consolas, 'DejaVu Sans Mono', monospace;
   --jp-code-font-family: var(--jp-code-font-family-default);
+  /* --jp-code-font-family: var(--font-mono); */
 
   /* This gives a magnification of about 125% in presentation mode over normal. */
   --jp-code-presentation-font-size: 16px;

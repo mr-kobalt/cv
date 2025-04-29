@@ -61,7 +61,7 @@ export function Printer ({className=""}: Props) {
 
   return (
     <Button
-      className={`fixed z-50 right-4 size-16 rounded-full shadow-2xl print:hidden ${className}`}
+      className={`fixed z-50 right-4 size-16 rounded-full shadow-2xl cursor-pointer print:hidden ${className}`}
       style={buttonStyle}
       onClick={() => window.print()}
       title="Напечатать резюме"

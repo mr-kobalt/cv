@@ -40,7 +40,7 @@ export default async function Page(
   const variant = (await params).variant as keyof typeof RESUME_DATA.variants
 
   if(!RESUME_DATA.variants.hasOwnProperty(variant)) {
-    redirect('/default')
+    redirect('/data')
   }
 
   let variant_data = RESUME_DATA.variants[variant]
@@ -50,7 +50,7 @@ export default async function Page(
 
   return (
     <main className="container relative mx-auto scroll-my-12 px-4 pt-4 print:pt-0 md:pt-16">
-      <section className="w-full mx-auto max-w-3xl space-y-8 print:space-y-4">
+      <section className="w-full mx-auto max-w-3xl space-y-8 print:space-y-2">
         <div>
           <h1 className="text-3xl font-bold sm:hidden">{RESUME_DATA.name}</h1>
           <div className="flex items-start mt-4 justify-between">
@@ -108,12 +108,13 @@ export default async function Page(
                     asChild
                   >
                     <a href={social.url} target="_blank">
-                      <social.icon className="size-5" />
+                      {/* `w-5` looks better than `size-5`, don't know why */}
+                      <social.icon className="w-5" />
                     </a>
                   </Button>
                 ))}
               </div>
-              <div className="hidden justify-items-start gap-1 grid-cols-3 font-mono print:grid">
+              <div className="hidden mt-3 justify-items-start gap-1 grid-cols-3 font-mono print:grid">
                 <Button
                   key="location"
                   className="h-4 px-0 font-light print:text-2xs"
@@ -202,7 +203,7 @@ export default async function Page(
                   <div
                     key={index}
                     // remarkPlugins={[remarkGfm]}
-                    className="text-pretty font-mono text-sm print:text-xs"
+                    className="markdown text-pretty font-mono text-sm print:text-xs"
                   >
                     <Markdown>
                       {paragraph}
@@ -211,10 +212,10 @@ export default async function Page(
               )})}
           </Section>
         ) : null}
-        <Section>
+        <Section >
           <h2 className="text-xl font-bold">Обо мне</h2>
           <div
-            className="text-pretty font-mono text-sm print:text-xs"
+            className="markdown text-pretty font-mono text-sm print:text-xs"
             >
             <Markdown
               remarkPlugins={[remarkGfm]}
@@ -292,9 +293,10 @@ export default async function Page(
         <Section className={"scroll-mb-16".concat(" ", cover_letter ? " print-force-new-page" : "")}>
           <h2 className="text-xl font-bold">Проекты</h2>
           <div className="-mx-3 grid grid-cols-1 gap-3 print:grid-cols-4 print:gap-2 sm:grid-cols-2 md:grid-cols-3 print:mx-0">
-            {RESUME_DATA.projects.map((project) => {
+            {RESUME_DATA.projects.filter((project) => !project.hidden).map((project) => {
               return (
                 <ProjectCard
+                  slug={project.slug}
                   key={project.title}
                   title={project.title}
                   description={project.description}

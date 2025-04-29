@@ -55,14 +55,16 @@ type Link = {
 }
 
 type Project = {
+  slug?: string,
   title: string,
   techStack: string[],
   description_short: string,
   description: string,
-  problems: string[],
+  problems?: string[],
   result: string[],
   link?: Link ,
-  images?: StaticImageData[]
+  images?: StaticImageData[],
+  hidden?: boolean
 }
 
 export type Resume = {
@@ -92,13 +94,13 @@ export let RESUME_DATA: Resume = {
     "Операционный директор, Руководитель проектов, Бизнес-аналитик",
   variants: {
     // do not delete `default`
-    default: {},
+    coo: {},
     data: {
-      about: "~~Операционный директор~~ Data Analyst / Data Scientist",
-      summary: "Перезапускаю карьеру. Хочу сфокусироваться на\u00a0**создании продуктов** основанных на\u00a0**анализе данных** и\u00a0**машинном обучении**. **14\u00a0лет** развивал IT-интеграторов России. Люблю IT во\u00a0всех проявлениях. Склонен к\u00a0системному подходу и\u00a0анализу данных. Изучаю мануалы прежде чем спросить. Выбираю обучение через практику. Пропагандирую data-driven и\u00a0вероятностный подходы в\u00a0бизнесе (и\u00a0жизни). Стремлюсь участвовать в\u00a0сложных и\u00a0полезных проектах. Люблю ответственность."
+      about: "Data Analyst / Data Scientist",
+      summary: "**14\u00a0лет** развивал IT-интеграторов Москвы и СПБ, теперь перезапускаю карьеру с фокусом на\u00a0**создании** продуктов основанных на\u00a0**анализе данных** и\u00a0**машинном обучении**. Склонен к\u00a0системному подходу и\u00a0анализу. Изучаю мануалы прежде чем спросить. Выбираю обучение через практику. Пропагандирую data-driven и\u00a0вероятностный подходы в\u00a0бизнесе (и\u00a0жизни). Стремлюсь участвовать в\u00a0сложных и\u00a0полезных проектах. Люблю ответственность."
     },
     leftjoin: {
-      about: "~~Операционный директор~~ Data Analyst",
+      about: "Data Analyst",
       cover_letter: {
         title: "LeftJoin",
         logo: LeftJoinLogo,
@@ -112,7 +114,7 @@ export let RESUME_DATA: Resume = {
       }
     },
     adengi: {
-      about: "~~Операционный директор~~ Data Analyst / Data Scientist",
+      about: "Data Analyst / Data Scientist",
       cover_letter: {
         title: "А Деньги",
         logo: AdengiLogo,
@@ -125,7 +127,7 @@ export let RESUME_DATA: Resume = {
       }
     },
     kept: {
-      about: "~~Операционный директор~~ Data Analyst / Data Scientist",
+      about: "Data Analyst / Data Scientist",
       cover_letter: {
         title: "kept",
         logo: KeptLogo,
@@ -138,7 +140,7 @@ export let RESUME_DATA: Resume = {
       }
     },
     okkam: {
-      about: "~~Операционный директор~~ Data Scientist",
+      about: "Data Scientist",
       cover_letter: {
         title: "Okkam",
         logo: OkkamLogo,
@@ -151,7 +153,7 @@ export let RESUME_DATA: Resume = {
       }
     },
     sape: {
-      about: "~~Операционный директор~~ Data Scientist",
+      about: "Data Scientist",
       cover_letter: {
         title: "Sape",
         logo: SapeLogo,
@@ -165,7 +167,7 @@ export let RESUME_DATA: Resume = {
       }
     },
     metalead: {
-      about: "~~Операционный директор~~ Аналитик (Big Data/Data Science)",
+      about: "Аналитик (Big Data/Data Science)",
       cover_letter: {
         title: "metaLead",
         logo: MetaLeadLogo,
@@ -220,71 +222,71 @@ export let RESUME_DATA: Resume = {
     "люблю ответственность",
   ],
   skills: [
-    { name: "стратегическое планирование" },
-    { name: "управление проектами" },
-    { name: "наставничество" },
-    { name: "управление подрядчиками" },
     { name: "ETL", tooltip: "Extract, transform, load" },
     { name: "EDA", tooltip: "Exploratory Data Analysis" },
     { name: "ML", tooltip: "Machine Learning" },
     { name: "визуализация данных" },
     { name: "виртуализация" },
     { name: "контейнеризация" },
+    { name: "стратегическое планирование" },
+    { name: "управление проектами" },
+    { name: "управление подрядчиками" },
     { name: "оптимизация процессов" },
-    { name: "английский B2", tooltip: "Читаю технические статьи и литературу, смотрю фильмы и лекции, изредка переписываюсь" }
+    { name: "наставничество" },
+    { name: "English B2", tooltip: "Able to read and analyze technical literature in English with ease, comprehend video lectures and films comfortably, and communicate professionally in written English" }
   ],
   tools: [
     {
-      name: "Excel",
-      tooltip: "Без прикрас могу назвать себя гуру, вплоть до написания своих макросов, подключения базы через коннектор **ODBC**, предобработки данных в **PowerQuery** и их анализу в **PowerPivot**. Ну и сводные, конечно.",
+      name: "Python",
+      tooltip: "Работаю с библиотеками `pandas`, `numpy`, `sklearn`, `matplotlib`, `seaborn`, `SQLAlchemy`, `requests`. Исследовательский анализ данных, визуализация, тренировка моделей ML, работа с API, работа с СУБД, написание ботов",
     },
     {
-      name: "1С",
-      tooltip: "Работаю с **1С** уже 10 лет, последние пять занимался внедрением. Конфигурации: КА, Бухгалтерия, Торговля, УНФ.",
+      name: "SQL (Postgres, MySQL, SQLite)",
+      tooltip: "Аггрегация, оконные функции, подзапросы",
     },
     {
       name: "DataLens",
-      tooltip: "Последний год внедряем этот BI-инструмент",
+      tooltip: "Занимался его внедрением и разработкой дашбордов для руководителей и сотрудников компании",
     },
     {
-      name: "BPMN",
-      tooltip: "Практикую визуальное описание процессов в нотации **BPMN** (предпочитаю **Camunda Modeler**)",
-    },
-    {
-      name: "Proxmox/Hyper-V/VMware",
-      tooltip: "Знаком с гипервизорами **VMWare**, **Hyper-V**; администрирую свой домашний хост **Proxmox**",
-    },
-    {
-      name: "Docker/Podman/K8s",
-      tooltip: "Использую контейнеры **Docker**/**Podman** для тестирования и развёртывания сервисов; знаком с **k8s**/**k3s**, но его возможности всегда были избыточны для моих задач",
+      name: "Regex",
+      tooltip: "Если есть задача обработать текст, то не обойтись без регулярных выражений",
     },
     {
       name: "GIT",
       tooltip: "",
     },
     {
-      name: "Linux (CentOS/CoreOS/Ubuntu)",
-      tooltip: "Использую преимущественно семейство Red Hat в силу личных предпочтений и **Ubuntu**/**Debian** в силу распространённости",
+      name: "Linux (RedHat/Debian-based)",
+      tooltip: "В последнее время пробую работу неизменяемых дистрибутивов CoreOS и NixOS",
     },
     {
       name: "PowerShell/Bash",
-      tooltip: "Хотя бы раз в день заглядываю в консоль",
+      tooltip: "Комфортно чувствую себя в консоли и могу написать небольшой скрипт",
     },
     {
-      name: "Regex",
-      tooltip: "Всегда приходит на помощь, когда `Ctrl+H` не справляется",
-    },
-    {
-      name: "SQL (Postgres, MySQL, SQLite)",
-      tooltip: "Базовые знания языка, использовал в основном для подготовки данных к экспорту между системами",
-    },
-    {
-      name: "Python (Pandas, NumPy)",
-      tooltip: "Базовые знания языка и библиотек, написание небольших скриптов и ботов",
+      name: "Docker/Podman/K8s",
+      tooltip: "Использую контейнеры **Docker**/**Podman**; знаком с **k8s**/**k3s**, но он всегда был избыточен для моих задач",
     },
     {
       name: "VS Code",
-      tooltip: "Предпочитаю его из-за удобства использования, расширяемости и относительного быстродействия"
+      tooltip: "Текстовый редактор по умолчанию"
+    },
+    {
+      name: "Proxmox/Hyper-V/VMware",
+      tooltip: "Знаком с гипервизорами **VMWare**, **Hyper-V**; администрирую свой домашний хост **Proxmox**",
+    },
+    {
+      name: "Excel",
+      tooltip: "Могу написать свои макросы, подключить базы через коннекторы **ODBC**, предобработать данные в **PowerQuery** и проанализировать в **PowerPivot**. Ну и сводные, конечно.",
+    },
+    {
+      name: "1С",
+      tooltip: "Работаю с **1С** уже 10 лет, последние пять занимался внедрением. Конфигурации: КА, Бухгалтерия, Торговля, УНФ.",
+    },
+    {
+      name: "BPMN",
+      tooltip: "Практикую визуальное описание процессов в нотации **BPMN** (предпочитаю **Camunda Modeler**)",
     },
   ],
   work: [
@@ -322,7 +324,7 @@ export let RESUME_DATA: Resume = {
         "Работа с новыми и существующими заказчиками: пресейл, оформление, сопровождение, закрытие сделок.",
       achievements: [
         "Увеличили выручку [со 187 млн. руб. в 2014 году до 742 млн. руб. в 2019 году](https://bo.nalog.ru/organizations-card/1491370)",
-        "Добились получения золотого партнёрского статуса **HP Inc./HPE**",
+        "Добились получения золотого партнёрского статуса **Hewlett Packard**",
       ],
       quit: [
         "Как продавец достиг своего потолка",
@@ -331,6 +333,20 @@ export let RESUME_DATA: Resume = {
     },
   ],
   projects: [
+    {
+      slug: "vgchartz",
+      link: { label: "vgchartz", href: "/project/vgchartz"},
+      title: "Исследование видеоигр 2000-2013",
+      techStack: ["Jupyter", "Python", "pandas", "sklearn", "fuzzywuzzy"],
+      description_short:
+        "Аналитический отчёт на основе данных VGChartz",
+      description: "В рамках учебного проекта [Yandex Data Analyst](https://practicum.yandex.ru/data-analyst/), мы отрабатывали методы очистки данных на заранее подготовленном датасете о продаже видеоигр, который очень сильно напоминает выгрузку базы [VGChartz](vgchartz.com). В процессе работы над проектом я отклонился от методов, предлагаемых учебной программой, и помимо достижения целей проекта реализовал:\n\n- предсказание недостающих данных с помощью моделей машинного обучения (_baseline_ - замена недостающих значений на медиану по группе, рассматривались модели **линейной регрессии (Ridge)** и **градиентного бустинга**);\n- заполнение недостающих данных используя открытые источники - API [GiantBomb](giantbomb.com) с последующим сопоставлением записей по названию игр используя нечёткое сравнение (библиотека `fuzzywuzzy`, использующая [редакционное растояние](https://ru.wikipedia.org/wiki/%D0%A0%D0%B0%D1%81%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B5_%D0%9B%D0%B5%D0%B2%D0%B5%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%D0%B0))",
+      result: [
+        "выполнил все задания и сдал проект",
+        "использование ML привлекло внимание преподавателя и он дал несколько полезных советов и замечаний",
+      ],
+      images: screenshots.vgchartz
+    },
     {
       title: "Отчётность в DataLens",
       techStack: ["Яндекс.Облако", "DataLens", "Битрикс24", "1С", "SQL", "Bash"],
@@ -439,7 +455,7 @@ export let RESUME_DATA: Resume = {
     },
     {
       title: "MS Azure/365",
-      techStack: ["Azure AD DS", "Exchange Online", "SharePoint Online", "OneDrive"],
+      techStack: ["Azure AD DS", "Exchange", "SharePoint", "OneDrive"],
       description_short: "Внедрение облачных сервисов Microsoft Azure",
       description:
         "До СВО мной продвигалась стратегия cloud-first при построении корпоративной инфраструктуры и рабочих инструментов. Microsoft Azure, с его Доменными сервисами и экосистемой связанных продуктов, стал основой инфраструктуры ИМБА с 2020 по 2022 год.",
@@ -451,7 +467,8 @@ export let RESUME_DATA: Resume = {
       result: [
         "мы получили практически из коробки с минимальными трудозатратами работающие службы доменов, каталогов, почты, файлового хранилища, конференцсвязи",
         "широкий набор дополнительных сервисов позволил нам быстро внедрить Microsoft Intune, SSO и др."
-      ]
+      ],
+      hidden: false
     },
     {
       title: "Сайт компании 4х4",
@@ -476,7 +493,8 @@ export let RESUME_DATA: Resume = {
         label: "4by4.ru",
         href: "https://4by4.ru",
       },
-      images: screenshots.fourbyfour
+      images: screenshots.fourbyfour,
+      hidden: true
     },
     {
       title: "Генератор КП",

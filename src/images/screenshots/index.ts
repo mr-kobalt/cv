@@ -12,6 +12,10 @@ import excel_1 from "./EXCEL_0LjZhNe88q.png"
 import excel_2 from "./EXCEL_7WXBrysOvK.png"
 import excel_3 from "./EXCEL_Jd1A6zH0jl.png"
 import excel_4 from "./EXCEL_ncl3F2OV0B.png"
+import vgchartz_1 from "./firefox_6ICSQB62LM.png"
+import vgchartz_2 from "./firefox_Fqnxzi0lcm.png"
+import vgchartz_3 from "./firefox_aWdG5km0SH.png"
+import vgchartz_4 from "./firefox_var952g24r.png"
 
 const screenshots = {
     fourbyfour: [
@@ -35,6 +39,12 @@ const screenshots = {
         excel_3,
         excel_1,
         excel_2,
-    ]
+    ],
+    vgchartz: [
+        vgchartz_1,
+        vgchartz_2,
+        vgchartz_3,
+        vgchartz_4,
+    ],
 };
 export default screenshots;

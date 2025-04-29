@@ -35,7 +35,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
   return (
     <div>
       <div
-        className="overflow-hidden rounded-xl outline-offset-4"
+        className="overflow-hidden rounded-xl outline-offset-4 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-3"
         ref={emblaRef}
         tabIndex={0}
       >
@@ -45,9 +45,9 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
               className="flex items-center justify-center transform-none shrink-0 grow-1 h-[50svh] min-w-0 pl-3"
               key={index}
             >
-              <div className="embla__slide__number rounded-xl overflow-hidden select-none shadow-muted text-4xl font-semibold transition-all h-full">
-                <Image src={slide} alt={(index+1)+" screenshot"} className='h-auto w-auto max-w-full max-h-full'></Image>
-              </div>
+              {/* <div className="embla__slide__number rounded-xl overflow-hidden select-none shadow-muted text-4xl font-semibold transition-all h-full"> */}
+                <Image src={slide} alt={(index+1)+" screenshot"} className='h-auto w-auto max-w-full max-h-full embla__slide__number rounded-xl overflow-hidden select-none shadow-muted text-4xl font-semibold transition-all h-full'></Image>
+              {/* </div> */}
             </div>
           ))}
         </div>
@@ -59,7 +59,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
               key={index}
               onClick={event => handleClick(event, index)}
               onKeyUp={event => event.key === 'Enter' ? handleClick(event, index) : null}
-              className={'embla__dot appearance-none touch-manipulation inline-flex cursor-pointer rounded-full mr-2 w-3 h-3 border-gray-500 border outline-offset-4 transition-all'.concat(
+              className={'embla__dot appearance-none touch-manipulation inline-flex cursor-pointer rounded-full mr-2 w-3 h-3 border-gray-500 border outline-offset-4 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-3 transition-all'.concat(
                 index === selectedIndex ? ' embla__dot--selected' : ''
               )}
             />

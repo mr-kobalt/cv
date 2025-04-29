@@ -17,7 +17,7 @@ export function ToggleTheme({className=""}: Props) {
   }
 
   return (
-    <Button className={className} variant={"ghost"} size={"icon"} onClick={() => handleClick()}>
+    <Button className={`cursor-pointer ${className}`} variant={"ghost"} size={"icon"} onClick={() => handleClick()}>
       <Sun className="h-5 w-5 hidden dark:block"/>
       <Moon className="h-5 w-5 block dark:hidden"/>
       <span className="sr-only">Toggle theme</span>

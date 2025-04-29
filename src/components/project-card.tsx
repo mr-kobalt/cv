@@ -23,6 +23,10 @@ import EmblaCarousel from "./ui/carousel";
 import AutoScroll from "embla-carousel-auto-scroll"
 import { EmblaOptionsType, EmblaPluginType } from 'embla-carousel'
 import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures'
+import Markdown from "react-markdown";
+import { Button } from "./ui/button";
+import { MoveRight } from "lucide-react";
+import Link from "next/link";
 
 const OPTIONS: EmblaOptionsType = {
   loop: true,
@@ -42,6 +46,7 @@ const PLUGINS: EmblaPluginType[] = [
 ]
 
 interface Props {
+  slug?: string;
   title: string;
   description: string;
   description_short: string;
@@ -54,6 +59,7 @@ interface Props {
 }
 
 export function ProjectCard({
+  slug,
   title,
   description_short,
   description,
@@ -107,7 +113,8 @@ export function ProjectCard({
             </div>
           </CardHeader>
           <CardContent className="mt-auto print:mt-0 flex">
-            <div className="mt-2 flex flex-wrap-reverse gap-1">
+            <div className="mt-2 flex flex-wrap gap-1">
+            {/* <div className="mt-2 flex flex-wrap-reverse gap-1"> */}
               {tags.map((tag) => (
                 <Badge
                   className="px-1 py-0 text-2xs print:px-1 print:py-0.5 print:text-3xs print:leading-tight"
@@ -122,14 +129,14 @@ export function ProjectCard({
         </Card>
       </DialogTrigger>
       <DialogContent
-        className={"grid items-center content-stretch grid-cols-1 gap-5 min-w-sm max-h-svh md:max-h-[90svh] lg:max-h-[70svh] border border-muted lg:scale-125 overflow-auto"+(images ? " md:grid-cols-2 max-w-3xl" : " md:grid-cols-1 max-w-xl")}
+        className={"grid items-center content-stretch grid-cols-1 gap-5 min-w-sm h-auto max-h-svh md:max-h-[90svh] lg:max-h-[70svh] lg:scale-125 border border-muted overflow-auto"+(images ? " md:grid-cols-2 max-w-[60svw]" : " md:grid-cols-1 max-w-xl")}
         aria-description="Project description"
       >
         {images ?
           <div
             id="carouselWrapper"
             aria-description="Project slides"
-            className={"md:cursor-pointer order-last md:order-first"+(openCarousel ? " md:col-span-2 md:pr-4" : "")}
+            className={"md:cursor-grab order-last md:order-first"+(openCarousel ? " md:col-span-2 md:pr-4" : "")}
             onClick={() => setOpenCarousel(!openCarousel)}
             onKeyUp={event => onKeyUpCarousel(event)}
           >
@@ -141,59 +148,32 @@ export function ProjectCard({
           </div>
         : null}
         <Card
-          className={"flex bg-background flex-col"+(openCarousel ? " md:hidden" : "")}
+          className={"flex flex-col gap-2 bg-background h-full"+(openCarousel ? " md:hidden" : "")}
           aria-description="Project details"
         >
-          <DialogHeader className="text-left">
+          <DialogHeader className="text-left space-y-0">
             <DialogTitle asChild>
               <CardHeader>
-                <div className="space-y-1">
-                  <CardTitle className="text-base">
-                    {link ? (
-                      <a
-                        href={link}
-                        target="_blank"
-                        className="inline-flex items-center gap-1 hover:underline outline-offset-4 focus-visible:underline"
-                      >
-                        {title}
-                        <span className="pl-1 size-1 rounded-full bg-green-500"></span>
-                      </a>
-                    ) : (
-                      title
-                    )}
-                  </CardTitle>
-                  <div className="hidden font-mono text-xs underline print:visible">
-                    {link?.replace("https://", "").replace("www.", "").replace("/", "")}
-                  </div>
+                <CardTitle className="text-base">
+                  {link ? (
+                    <a
+                      href={link}
+                      target="_blank"
+                      className="inline-flex items-center gap-1 hover:underline outline-offset-4 focus-visible:underline"
+                    >
+                      {title}
+                      <span className="pl-1 size-1 rounded-full bg-green-500"></span>
+                    </a>
+                  ) : (
+                    title
+                  )}
+                </CardTitle>
+                <div className="hidden font-mono text-xs underline print:visible">
+                  {link?.replace("https://", "").replace("www.", "").replace("/", "")}
                 </div>
               </CardHeader>
             </DialogTitle>
-            <DialogDescription asChild>
-              <CardDescription className="font-light font-mono text-xs print:text-2xs">
-                {description ? description : description_short}
-              </CardDescription>
-            </DialogDescription>
-          </DialogHeader>
-          <CardContent>
-              <h4 className="mt-2 text-sm font-semibold">Предпосылки</h4>
-              {problems ? (
-                <ul className="ml-6 text-xs print:text-2xs list-square">
-                  {problems.map((problem) => (
-                    <li key={problem}>{problem}</li>
-                  ))}
-                </ul>
-              ) : null}
-              <h4 className="mt-2 text-sm font-semibold">Результат</h4>
-              {result ? (
-                <ul className="ml-6 text-xs print:text-2xs list-square">
-                  {result.map((result) => (
-                    <li key={result}>{result}</li>
-                  ))}
-                </ul>
-              ) : null}
-          </CardContent>
-          <CardFooter>
-            <div className="mt-2 flex flex-wrap gap-1">
+            <div className="flex flex-wrap gap-1">
               {tags.map((tag) => (
                 <Badge
                   className="px-1 py-0 text-2xs print:px-1 print:py-0.5 print:text-3xs print:leading-tight"
@@ -204,7 +184,51 @@ export function ProjectCard({
                 </Badge>
               ))}
             </div>
-          </CardFooter>
+          </DialogHeader>
+          <CardContent>
+            {/* <DialogDescription className="markdown font-mono text-xs print:text-2xs"> */}
+              {/* <CardDescription className="markdown font-mono text-xs print:text-2xs" > */}
+                <div className="markdown font-mono text-xs print:text-2xs">
+                  {/* <Markdown unwrapDisallowed disallowedElements={["p"]}> */}
+                  <Markdown>
+                    {description ? description : description_short}
+                  </Markdown>
+                </div>
+              {/* </CardDescription> */}
+            {/* </DialogDescription> */}
+              {problems ? (
+                <>
+                  <h4 className="mt-2 text-sm font-sans font-semibold">Предпосылки</h4>
+                  <ul className="ml-6 text-xs print:text-2xs list-square">
+                    {problems.map((problem) => (
+                      <li key={problem}>{problem}</li>
+                    ))}
+                  </ul>
+                </>
+              ) : null}
+              {result ? (
+                <>
+                  <h4 className="mt-2 text-sm font-sans font-semibold">Результат</h4>
+                  <ul className="ml-6 text-xs print:text-2xs list-square">
+                    {result.map((result) => (
+                      <li key={result}>{result}</li>
+                    ))}
+                  </ul>
+                </>
+              ) : null}
+              {slug ? (
+                <Button
+                  className="mt-2 text-xs gap-2 cursor-pointer hover:no-underline"
+                  size={"sm"}
+                  asChild
+                >
+                  <a href={`./project/${slug}`}>Подробнее<MoveRight className="size-4"/></a>
+                </Button>
+              ) : null}
+          </CardContent>
+          {/* <CardFooter className="mt-auto">
+
+          </CardFooter> */}
         </Card>
       </DialogContent>
     </Dialog>

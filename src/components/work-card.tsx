@@ -53,7 +53,7 @@ export function WorkCard({
         <Card key={company} className="group bg-background flex flex-col overflow-hidden px-3 py-1">
           <CardHeader>
             <div className="flex items-center justify-between gap-x-2 text-base">
-              <h3 className="inline-flex items-center justify-center gap-x-1 font-semibold leading-none">
+              <h3 className="inline-flex items-baseline justify-center gap-x-1 font-semibold leading-none">
                 <a
                   className="hover:underline"
                   target="_blank"
@@ -78,24 +78,24 @@ export function WorkCard({
                 {start}&nbsp;- {end ?? "по настоящее время"}
               </div>
             </div>
-            <h4 className="font-mono group-hover:underline max-md:underline decoration-dashed text-sm leading-none print:no-underline print:text-xs">
+            <h4 className="font-mono group-hover:underline max-md:underline underline-offset-3 decoration-dashed text-sm leading-none print:no-underline print:text-xs">
               {title}
             </h4>
           </CardHeader>
           <CardContent className="flex font-extralight text-foreground gap-2 mt-2 text-xs print:text-2xs">
             <div>
-              <div><Markdown components={{ p: ({ children }) => <>{children}</>}}>{description}</Markdown></div>
+              <div className="markdown"><Markdown components={{ p: ({ children }) => <>{children}</>}}>{description}</Markdown></div>
               <CollapsibleContent
                 className="text-xs print:text-2xs print:hidden data-[state=closed]:animate-slideUp data-[state=open]:animate-slideDown"
               >
                 <h4 className="mt-2 text-sm font-semibold">Обязанности</h4>
-                <div className="text-xs print:text-2xs"><Markdown components={{ p: ({ children }) => <>{children}</>}}>{responsibility}</Markdown></div>
+                <div className="markdown text-xs print:text-2xs"><Markdown components={{ p: ({ children }) => <>{children}</>}}>{responsibility}</Markdown></div>
                 {achievements ? (
                   <div>
                     <h4 className="mt-2 text-sm font-semibold">Достижения</h4>
                     <ul className="ml-6 text-xs print:text-2xs list-square">
                       {achievements.map((achievement) => (
-                        <li key={achievement}><Markdown components={{ p: ({ children }) => <>{children}</>}}>{achievement}</Markdown></li>
+                        <li className="markdown" key={achievement}><Markdown components={{ p: ({ children }) => <>{children}</>}}>{achievement}</Markdown></li>
                       ))}
                     </ul>
                   </div>
@@ -105,7 +105,7 @@ export function WorkCard({
                     <h4 className="mt-2 text-sm font-semibold">Почему ушёл</h4>
                     <ul className="ml-6 text-xs print:text-2xs list-square">
                       {quit.map((quit) => (
-                        <li key={quit}><Markdown components={{ p: ({ children }) => <>{children}</>}}>{quit}</Markdown></li>
+                        <li className="markdown" key={quit}><Markdown components={{ p: ({ children }) => <>{children}</>}}>{quit}</Markdown></li>
                       ))}
                     </ul>
                   </div>
