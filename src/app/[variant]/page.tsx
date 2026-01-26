@@ -21,10 +21,21 @@ type Props = {
   params: Promise<{ variant: string }>
 }
 
+export async function generateStaticParams() {
+  // Fetch data from an API, database, or local source
+  const variants: string[] = Object.keys(RESUME_DATA.variants);
+
+  // Map the data to an array of objects, where each object
+  // corresponds to the dynamic segment name(s)
+  return variants.map(variant => ({
+    variant: variant,
+  }));
+}
+
 export async function generateMetadata(
   { params }: Props
 ): Promise<Metadata> {
-  const variant = (await params).variant as keyof typeof RESUME_DATA.variants
+  const { variant } = await params
   const summary = ( RESUME_DATA.variants[variant] as any ).summary as 'string' | undefined
   const about = ( RESUME_DATA.variants[variant] as any ).about as 'string' | undefined
 
@@ -37,7 +48,7 @@ export async function generateMetadata(
 export default async function Page(
   { params }: Props
 ) {
-  const variant = (await params).variant as keyof typeof RESUME_DATA.variants
+  const { variant } = await params
 
   if(!RESUME_DATA.variants.hasOwnProperty(variant)) {
     redirect('/data')

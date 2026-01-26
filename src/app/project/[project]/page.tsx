@@ -21,6 +21,18 @@ type Props = {
   params: Promise<{ project: string }>
 }
 
+export async function generateStaticParams() {
+  // Fetch data from an API, database, or local source
+  const projects = RESUME_DATA.projects;
+  const filteredProjects = projects.filter(project => project.slug !== undefined);
+
+  // Map the data to an array of objects, where each object
+  // corresponds to the dynamic segment name(s)
+  return filteredProjects.map(project => ({
+    project: project.slug,
+  }));
+}
+
 export const metadata: Metadata = {
   title: `${RESUME_DATA.name} | ${RESUME_DATA.about}`,
   description: RESUME_DATA.summary,
