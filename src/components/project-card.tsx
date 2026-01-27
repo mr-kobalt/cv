@@ -222,7 +222,7 @@ export function ProjectCard({
                   size={"sm"}
                   asChild
                 >
-                  <a href={`./project/${slug}`}>Подробнее<MoveRight className="size-4"/></a>
+                  <Link href={`/project/${slug}`} prefetch={true}>Подробнее<MoveRight className="size-4"/></Link>
                 </Button>
               ) : null}
           </CardContent>
